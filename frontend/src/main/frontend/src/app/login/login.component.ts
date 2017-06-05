@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       .catch(errorMessage => this.message = errorMessage)
       .then(() => {
         if (this._authService.isAuthenticated()) {
-          this._router.navigate(['/educationmodules, {view:Featured}']);
+          this._router.navigate(['/educationmodules']);
         }
       });
 
