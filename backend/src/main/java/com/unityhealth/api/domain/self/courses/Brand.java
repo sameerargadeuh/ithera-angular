@@ -5,18 +5,10 @@
  */
 package com.unityhealth.api.domain.self.courses;
 
+import com.unityhealth.api.domain.self.company.Company;
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -32,8 +24,10 @@ public class Brand implements Serializable {
     @Basic(optional = false)
     @Column(name = "iID")
     private Integer iID;
-    @Column(name = "iCompanyID")
-    private Integer iCompanyID;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="iCompanyID")
+    //private Integer iCompanyID; 
+    private Company company; 
     @Size(max = 255)
     @Column(name = "vName")
     private String vName;
@@ -64,13 +58,13 @@ public class Brand implements Serializable {
         this.iID = iID;
     }
 
-    public Integer getICompanyID() {
-        return iCompanyID;
-    }
-
-    public void setICompanyID(Integer iCompanyID) {
-        this.iCompanyID = iCompanyID;
-    }
+//    public Integer getICompanyID() {
+//        return iCompanyID;
+//    }
+//
+//    public void setICompanyID(Integer iCompanyID) {
+//        this.iCompanyID = iCompanyID;
+//    }
 
     public String getVName() {
         return vName;
@@ -135,6 +129,20 @@ public class Brand implements Serializable {
     @Override
     public String toString() {
         return "com.unityhealth.api.domain.self.courses.Brand[ iID=" + iID + " ]";
+    }
+
+    /**
+     * @return the company
+     */
+    public Company getCompany() {
+        return company;
+    }
+
+    /**
+     * @param company the company to set
+     */
+    public void setCompany(Company company) {
+        this.company = company;
     }
     
 }

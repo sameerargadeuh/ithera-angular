@@ -31,14 +31,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/util")
 //@PreAuthorize(value = "hasAnyRole('ROLE_USER','ROLE_RESTRICTED_USER')")
-public class TestRestController {
+public class ModulesRestController {
 
-    private Logger log = LoggerFactory.getLogger(TestRestController.class);
+    private Logger log = LoggerFactory.getLogger(ModulesRestController.class);
     ICoursesRepository coursesRepository;
     private CoursesMapper coursesMapper;
 
     @Autowired
-    TestRestController(ICoursesRepository coursesRepository, CoursesMapper coursesMapper) {
+    ModulesRestController(ICoursesRepository coursesRepository, CoursesMapper coursesMapper) {
         this.coursesRepository = coursesRepository;
         this.coursesMapper = coursesMapper;
     }
