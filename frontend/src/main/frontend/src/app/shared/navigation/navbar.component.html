@@ -1,0 +1,63 @@
+<div class="navbar navbar-default mega-menu" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <div class="col-md-1">
+                    <a class="navbar-brand" href="">
+                        <img id="logo-header" src="/assets/images/template/site-logo.png" alt="Logo">
+                    </a>
+                    </div>
+                    <button type="button" class="navbar-toggle hidden-print" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                        <span class="sr-only hidden-print">Toggle navigation</span>
+                        <span class="fa fa-bars hidden-print"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse hidden-print">
+                    <ul class="nav navbar-nav hidden-print">
+                        <!-- Home -->
+                        <li><a href="page.jsp?p=Home">Home</a></li>
+                        <!-- End Home -->
+                        <!-- Pages -->
+                        <li><a [routerLink]="['/educationmodules']" >Education Modules</a></li>
+                        <li><a href="page.jsp?p=MyAccount">My Account</a></li>
+                        <!--<c:if test="${account.supplierAccess eq true}">-->
+                            <!-- Manager Console -->
+                            <!--<li ${page.i_section == 'Client Console' ? 'class="active"':''}><a href="page.jsp?p=Dashboard">Dashboard</a></li>-->
+                            <!-- End Manager Console -->
+                        <!--</c:if>                        -->
+                        <!--<c:if test="${account.managerAccess eq true}">-->
+                            <!-- Manager Console -->
+                            <!--<li ${page.i_section == 'Manager Console' ? 'class="active"':''}><a href="page.jsp?p=Manager-Console-Home">Manager Console</a></li>-->
+                            <!-- End Manager Console -->
+                        <!--</c:if>-->
+                        <!-- iRewards -->
+                        <li ><a href="page.jsp?p=iRewards">iRewards</a></li>
+                        <!-- End iRewards -->
+                        <!-- End Pages -->
+                        <!--<c:if test="${empty logged}">-->
+		                    <!-- Suppliers -->
+		                    <li><a href="page.jsp?p=Suppliers">Suppliers</a></li>
+		                    <!-- End Suppliers -->
+	                    <!--</c:if>-->
+	                    <!-- Search Block -->
+	                    <li>
+	                        <i class="search fa fa-search search-btn"></i>
+	                        <div class="search-open">
+	                            <form role="search" action="page.jsp?p=Search" method="post">
+	                                <div class="input-group animated fadeInDown">
+	                                    <input name="txtsearch" type="text" class="form-control" placeholder="Search">
+	                                    <span class="input-group-btn">
+	                                        <button class="btn-u" type="submit">Go</button>
+	                                    </span>
+	                                </div>
+	                            </form>
+	                        </div>
+	                    </li>
+	                    <!-- End Search Block -->
+                    </ul>
+                </div><!--/navbar-collapse-->
+            </div>
+        </div>
+        <!-- End Navbar -->

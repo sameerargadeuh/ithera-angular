@@ -1,0 +1,125 @@
+<div class="col-md-2 md-margin-bottom-40">
+	    <ul id="category_list" class="list-group sidebar-nav-v1 margin-bottom-40">
+	        <li class="list-group-item">
+	             <a [routerLink]="['/educationmodules', {view: 'All'}]"><i class="fa fa-bar-chart-o"></i> All</a>
+	        </li>
+	        <li class="list-group-item">
+	             <a [routerLink]="['/educationmodules', {view: 'Featured'}]"><i class="fa fa-user"></i> Featured</a>
+	        </li>
+	        <li class="list-group-item ">
+	             <a [routerLink]="['/educationmodules', {view: 'Accredited'}]"><i class="fa fa-group"></i> Accredited</a>
+	        </li>
+	        <li class="list-group-item ">
+	             <a [routerLink]="['/educationmodules', {view: 'Brand'}]"><i class="fa fa-cubes"></i> Brand</a>
+	        </li>
+	        <li class="list-group-item">
+	             <a [routerLink]="['/educationmodules', {view: 'Category'}]"><i class="fa fa-comments"></i> Category</a>
+	        </li>
+	        <li class="list-group-item ">
+	             <a [routerLink]="['/educationmodules', {view: 'Product'}]"><i class="fa fa-user"></i> Product</a>
+	        </li>
+	        <li class="list-group-item ">
+	             <a [routerLink]="['/educationmodules', {view: 'Condition'}]"><i class="fa fa-user"></i> Condition</a>
+	        </li>
+	    </ul>
+	    <hr>
+		<!-- <c:set var="showSponsors">${uhfn:isLabelEnabled("site.sponsors", siteConfig)}</c:set>
+		<c:if test="${showSponsors}">
+		  <c:import url="inc_sponsorLogos.jsp" />
+		</c:if> 		-->
+	    <div class="margin-bottom-50"></div>
+	</div>
+
+  <div id="modules" class="col-md-10">
+    <div class="row">
+      <form class="sky-form">
+		<fieldset>
+		    <section>
+	            <div class="col-md-8 text-right">
+	                <label><i class="fa fa-filter"></i> Filter Modules By:</label>
+	            </div>
+	            <div class="col-md-4 text-right">
+	                <label class="select">
+		                <select id="filterModule" class="select" name="filter">
+		                    <option value="">All</option>
+		                    <option value="nc">Not Completed</option>
+		                </select>
+		                <i></i>
+	                </label>
+	            </div>
+		    </section>
+		</fieldset>
+	</form>
+  <div class="margin-top-20"></div>
+<div *ngFor="let module of modules; let i=index ">
+ <div class="clearfix" *ngIf="i % 3 == 0"></div>
+                    <div class="col-md-4 col-sm-6 ithera-height shadow-wrapper">
+                       <div class="box-shadow shadow-effect-2">
+                            <div class="thumbnails thumbnail-style thumbnail-kenburn easy-block-v2">
+                                <div class="thumbnail-img">
+                                    <div class="overflow-hidden">
+                                        <img class="img-responsive" src="/assets/images/module-thumbs/{{module.vimage}}" alt=""/>
+                                        <!--<c:if test="${module.is_New}"><div class="easy-bg-v2 rgba-red">New</div></c:if>-->
+                                        <!--<c:if test="${moduleStatus.trStatus eq 'user-passed'}"><div class="easy-bg-v2 easy-bg-v2-complete rgba-blue">Completed</div></c:if>-->
+                                    </div>
+                                </div>
+                                <div class="bottom-section">
+                                    <div class="caption">
+                                        <div class="cbp-title-dark">
+                                            <div class="cbp-l-grid-agency-title">{{module.vdesc}}</div>
+                                        </div>
+                                        <hr />
+                                        <!--<%/* <c:if test="${module.restrictedByProfession}">Restricted</c:if> */%>-->
+                                    </div>
+                                      <div class="row">
+	                                    <div class="col-md-7 col-sm-7 align-line">
+	                                        <div class="points-overlay"> {{ module.rewardsPoints }} pts </div>
+	                                        <!--<ithera:accreditation action="get_accreditation_by_id" id="accreditation" accreditationId="${module.accredTypeID}" />
+	                                        <c:if test="${module.accredited eq 'true'}">
+	                                            <span style="vertical-align: baseline;" class="label rounded label-primary"><i class="fa fa-check-circle"></i> <b>${accreditation.name}</b></span>
+	                                        </c:if>
+	                                        <c:if test="${module.accredPending eq 'true'}">
+	                                            <span style="vertical-align: baseline;" class="label rounded label-primary"><i class="fa fa-check-circle"></i> <b>${accreditation.name}</b> Pending</span>
+	                                        </c:if>-->
+	                                    </div>
+	                                    <div class="col-md-5 col-sm-5">
+	                                        <!--<c:choose>
+	                                            <c:when test="${module.comingSoon}">
+	                                                <div class="rgba-red">Coming Soon</div>
+	                                            </c:when>
+	                                            <c:otherwise>
+	                                                <c:set var="trStatus" value="${moduleStatus.trStatus}" />
+	                                                <c:choose>
+	                                                    <c:when test="${not empty trStatus and  trStatus eq 'incomplete' or trStatus eq 'not-attempted'}">
+	                                                        <c:set var="buttonLabel"><i class="fa fa-play-circle"></i> Continue</c:set>
+	                                                        <a class="btn btn-u read-more pull-right" target="_blank" href="openmodule.jsp?u=${module.url}&s=${breezeSession}" style="padding: 5px;">${buttonLabel}</a>
+	                                                    </c:when>
+	                                                    <c:when test="${not empty trStatus and trStatus eq 'user-failed'}">
+	                                                        <c:set var="buttonLabel"><i class="glyphicon glyphicon-repeat"></i> Retry</c:set>
+	                                                        <a class="btn btn-u read-more pull-right" target="_blank" href="openmodule.jsp?u=${module.url}&s=${breezeSession}" style="padding: 5px;">${buttonLabel}</a>
+	                                                    </c:when>
+	                                                    <c:when test="${not empty trStatus and trStatus eq 'user-passed'}">
+	                                                        <c:set var="buttonLabel"><i class="icon-refresh"></i> Review</c:set>
+	                                                        <a class="btn btn-u btn-u-blue read-more pull-right" target="_blank" href="openmodule.jsp?u=${module.url}&s=${breezeSession}" style="padding: 5px;">${buttonLabel}</a>
+	                                                    </c:when>
+	                                                    <c:otherwise>-->
+	                                                        <!--<c:set var="buttonLabel">
+                                                            <i class="fa fa-circle"></i> Enrol
+                                                            </c:set>-->
+	                                                        <a class="btn btn-u pull-right" href="" role="button" style="padding: 5px;"> <i class="fa fa-circle"></i> Enrol</a>
+	                                                    <!--</c:otherwise>
+	                                                </c:choose>
+	                                            </c:otherwise>
+	                                        </c:choose>-->
+	                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!--<%session.setAttribute("display-requested-content", "false");%>-->
+
+                </div>
+            </div>
+  </div>

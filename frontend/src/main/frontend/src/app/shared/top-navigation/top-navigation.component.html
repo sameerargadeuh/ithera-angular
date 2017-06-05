@@ -1,0 +1,29 @@
+<div class="topbar-v1 hidden-print">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+
+                    </div>
+
+                    <div class="col-md-9">
+                        <ul class="list-inline top-v1-data topline">
+                            <li><a href="page.jsp?p=Home"><i class="fa fa-home" style="font-size:14px;"></i></a></li>
+
+                      <li *ngIf="_authService.isAuthenticated()"  style="padding: 7px 10px;">
+                       <li><span>Logged In: {{ _authService.getUserData().user_name }}</span>
+                      </li>
+                         <li><a href="login.jsp?action=logout">Logout</a></li>
+                                                    <li  *ngIf="!_authService.isAuthenticated()"  ><a href="page.jsp?p=Join">Join</a></li>
+                                <li id="login"><a [routerLink]="['/login']">Login</a></li>
+
+
+
+	                            <li>
+	                                <a id="tourguide" href="#">Take A Tour</a>
+	                            </li>
+ </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+

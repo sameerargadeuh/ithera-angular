@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'Indie Flower';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Indie Flower'), local('IndieFlower'), url('/assets/fonts/IndieFlower.woff2') format('woff2'), url('/assets/fonts/IndieFlower.woff') format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url('/assets/fonts/Lato-Light.woff2') format('woff2'), url('/assets/fonts/Lato-Light.woff') format('woff'), url('/assets/fonts/Lato-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url('/assets/fonts/Lato-Regular.woff2') format('woff2'), url('/assets/fonts/Lato-Regular.woff') format('woff'), url('/assets/fonts/Lato-Regular.ttf') format('truetype');;
+}
+@font-face {
+  font-family: 'IMgateway';
+  src: url('/assets/fonts/imgateway.woff');
+  src: url('/assets/fonts/imgateway.woff?#iefix') format('embedded-opentype'), url('/assets/fonts/imgateway.woff') format('woff'), url('/assets/fonts/imgateway.otf') format('truetype'), url('/assets/fonts/imgateway.svg#IMgatewayRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Muli Light'), local('Muli-Light'), url('/assets/fonts/Muli-Light.woff2') format('woff2'), url('/assets/fonts/Muli-Light.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url('/assets/fonts/OpenSans-Regular.woff2') format('woff2'), url('/assets/fonts/OpenSans-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url('/assets/fonts/OpenSans-Semibold.woff2') format('woff2'), url('/assets/fonts/OpenSans-Semibold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url('/assets/fonts/OpenSans-Italic.woff2') format('woff2'), url('/assets/fonts/OpenSans-Italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Oswald Light'), local('Oswald-Light'), url('/assets/fonts/Oswald-Light.woff2') format('woff2'), url('/assets/fonts/Oswald-Light.woff') format('woff'), url('/assets/fonts/Oswald-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(/assets/fonts/Oswald-Regular.woff2) format('woff2'), url('/assets/fonts/Oswald-Regular.woff') format('woff'), url('/assets/fonts/Oswald-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Oswald Bold'), local('Oswald-Bold'), url('/assets/fonts/Oswald-Bold.woff2') format('woff2'), url('/assets/fonts/Oswald-Bold.woff') format('woff'), url('/assets/fonts/Oswald-Bold.ttf') format('truetype');
+}

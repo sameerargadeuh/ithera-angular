@@ -1,0 +1,69 @@
+<!-- <c:if test="${startItem}">  need to check how this is done, if it's needed -->
+  <div *ngFor="let module of modules">
+    module description {{module.vdesc}}
+					   <!--<div   class="item team-v3">-->
+			<!--		</c:if>  need to check how this is done, if it's needed -->
+<div class="row">
+					    <div class="box-shadow shadow-effect-2">
+                        <div class="thumbnails thumbnail-style thumbnail-kenburn easy-block-v2">
+                            <div class="thumbnail-img">
+                                <div class="overflow-hidden">
+                                 module image    <img class="img-responsive" src="/assets/images/module-thumbs/{{module?.vimage}}" alt="">
+                                     <!--<c:if test="${module.is_New}"><div class="easy-bg-v2 rgba-red">New</div></c:if>-->
+ <!-- <c:if test="${uhfn:statusOfModule(module , ms) eq 'user-passed'}"><div class="easy-bg-v2 easy-bg-v2-complete rgba-blue">Completed</div></c:if> required on home page? -->
+                                </div>
+                            </div>
+                            <div class="bottom-section">
+                                <div class="caption">
+                                    <div class="cbp-title-dark">
+                                     <div class="cbp-l-grid-agency-title">{{module.vdesc}}</div>
+                                    </div>
+                                    <hr/>
+                                  <!--  <%--<c:if test="${module.restrictedByProfession}">Restricted</c:if>--%> is it already commented? -->
+                                </div>
+ <div class="row">
+                                    <div class="col-md-7 col-sm-7 align-line">
+
+										<!--<div class="points-overlay">{{module.rewardsPoints}}</div>-->
+										<!--<ithera:accreditation action="get_accreditation_by_id" id="accreditation" accreditationId="${module.iAccredTypeID}" />-->
+										<span style="vertical-align: baseline;" class="label rounded label-primary"><i class="fa fa-check-circle"></i> <b>{{module?.vdesc }}</b></span>
+										<!--<c:if test="${module.accredPending eq 'true'}"><span style="vertical-align: baseline;" class="label rounded label-primary"><i class="fa fa-check-circle"></i> <b>${accreditation.name}</b> Pending</span></c:if>-->
+									</div>
+									<div class="col-md-5 col-sm-5">
+										<!--<c:choose>-->
+											<!--<c:when test="${module.comingSoon}">
+												<div class="rgba-red">Coming Soon</div>
+											</c:when>-->
+											<!--<c:otherwise>
+												<c:set var="trStatus" value="${uhfn:statusOfModule(module, ms)}" />
+												<c:choose>
+													<c:when test="${not empty trStatus and  trStatus eq 'incomplete' or trStatus eq 'not-attempted'}">
+														<c:set var="buttonLabel"><i class="fa fa-play-circle"></i> Continue</c:set>
+														<a class="btn btn-u read-more pull-right" target="_blank" href="openmodule.jsp?u=${module.url}&s=${breezeSession}" style="padding: 5px;">${buttonLabel}</a>
+													</c:when>
+													<c:when	test="${not empty trStatus and trStatus eq 'user-failed'}">
+														<c:set var="buttonLabel"><i class="glyphicon glyphicon-repeat"></i> Retry</c:set>
+														<a class="btn btn-u read-more pull-right" target="_blank"	href="openmodule.jsp?u=${module.url}&s=${breezeSession}" style="padding: 5px;">${buttonLabel}</a>
+													</c:when>
+													<c:when test="${not empty trStatus and trStatus eq 'user-passed'}">
+														<c:set var="buttonLabel"><i class="icon-refresh"></i> Review</c:set>
+														<a class="btn btn-u btn-u-blue read-more pull-right" target="_blank" href="openmodule.jsp?u=${module.url}&s=${breezeSession}" style="padding: 5px;">${buttonLabel}</a>
+													</c:when>
+													<c:otherwise>
+														<c:set var="buttonLabel"><i class="fa fa-circle"></i> Enrol</c:set>-->
+														<!--<a class="btn btn-u pull-right" href="page.jsp?p=Courses${enrolRefStr}&amp;action=enrol&amp;scoID=${module.scoID}" role="button" style="padding: 5px;"><i class="fa fa-circle"></i> Enrol</a>-->
+                            <a class="btn btn-u pull-right" href="" role="button" style="padding: 5px;"><i class="fa fa-circle"></i> Enrol</a>
+													<!--</c:otherwise>
+												</c:choose>
+											</c:otherwise>
+										</c:choose>-->
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+					</div>
+					<!--<c:if test="${endItem}">-->
+					   <!--</div>-->
+  </div>
+					<!--</c:if>-->

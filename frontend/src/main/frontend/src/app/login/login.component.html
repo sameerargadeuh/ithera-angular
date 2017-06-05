@@ -1,0 +1,54 @@
+     <div class="col-md-6">
+            <div class="margin-bottom-20">
+            <form role="form" [formGroup]="loginForm" (submit)="login()">
+                <header class="bg-primary">Login to your account</header>
+                <fieldset>
+					<!--${uhfn:displayMessage("login.instructions.1", siteContent)}      need to check what this message should be -->
+					   <!--<input type="hidden" name="p" value="MyAccount" />
+					   <input type="hidden" name="action" value="loginProcess" />
+					   <input type="hidden" name="refer_id" value="${refer_id}" />-->
+					<!--<c:if test="${not empty param.redirectUrl}">
+					   <input type="hidden" name="redirectUrl" value="${param.redirectUrl}" />
+					</c:if>
+					<c:if test="${(not empty pageRef) and (not empty anchorRef)}">
+					   <input type="hidden" name="pageRef" value="${pageRef}" />
+					   <input type="hidden" name="anchorRef" value="${anchorRef}" />
+					</c:if>
+					<c:if test="${(not empty enrolRef)}">
+					   <input type="hidden" name="enrolRef" value="${enrolRef}" />
+					</c:if>
+					<c:if test="${(not empty section)}">
+					   <input type="hidden" name="section" value="${section}" />
+					</c:if>
+					<c:if test="${(not empty scoID)}">
+					   <input type="hidden" name="scoID" value="${scoID}" />
+					</c:if>-->
+                    <section>
+	                    <label class="input"><i class="icon-append fa fa-envelope"></i>
+	                       <input formControlName="username" type="text" placeholder="Username" class="form-control">
+	                    </label>
+                    </section>
+                    <section>
+	                    <label class="input"><i class="icon-append fa fa-lock"></i>
+	                        <input formControlName="password" type="password" placeholder="Password" class="form-control">
+	                    </label>
+                    </section>
+                    <section>
+                    </section>
+                    </fieldset>
+                    <footer>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-u">Login</button>
+                            <a href="page.jsp?p=Join" role="button" class="btn btn-u">Join</a>
+                        </div>
+                    </footer>
+					<!-- <%--
+					<div class="row">
+					    <div class="col-md-8">
+					        <label class="checkbox"><input id="signedIn" type="checkbox" name="signedIn"><i></i>Stay signed in</label>
+					    </div>
+					</div>
+					--%> -->
+                </form>
+            </div>
+            </div>
