@@ -90,14 +90,14 @@ public class Company implements Serializable {
     private Integer iAmountCap;
     @Lob
     @Size(max = 65535)
-    @Column(name = "vContractNotes")
+    @Column(name = "vContractNotes" , columnDefinition="TEXT")
     private String vContractNotes;
     @Size(max = 16)
     @Column(name = "vColour")
     private String vColour;
     @Lob
     @Size(max = 65535)
-    @Column(name = "vSponsorPageContent")
+    @Column(name = "vSponsorPageContent" ,columnDefinition="TEXT")
     private String vSponsorPageContent;
     @Size(max = 512)
     @Column(name = "vSponsorPageBannerLink")

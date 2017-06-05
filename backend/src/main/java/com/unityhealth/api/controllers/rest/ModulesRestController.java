@@ -5,10 +5,17 @@
  */
 package com.unityhealth.api.controllers.rest;
 
+import com.unityhealth.api.domain.self.courses.Brand;
+import com.unityhealth.api.domain.self.courses.Categories;
 import com.unityhealth.api.domain.self.courses.Courses;
 import com.unityhealth.api.domain.self.courses.FeaturedList;
+import com.unityhealth.api.domain.self.courses.IBrandRepository;
 import com.unityhealth.api.domain.self.courses.ICoursesRepository;
 import com.unityhealth.api.domain.self.courses.Section;
+import com.unityhealth.api.dto.brand.BrandDto;
+import com.unityhealth.api.dto.brand.IBrandMapper;
+import com.unityhealth.api.dto.categories.CategoryDto;
+import com.unityhealth.api.dto.categories.ICategoryMapper;
 import com.unityhealth.api.dto.courses.CoursesDto;
 import com.unityhealth.api.dto.courses.CoursesMapper;
 import java.util.ArrayList;
@@ -29,18 +36,24 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Transactional
 @RestController
-@RequestMapping("/api/util")
+@RequestMapping("/api/modules")
 //@PreAuthorize(value = "hasAnyRole('ROLE_USER','ROLE_RESTRICTED_USER')")
 public class ModulesRestController {
 
     private Logger log = LoggerFactory.getLogger(ModulesRestController.class);
-    ICoursesRepository coursesRepository;
+    private ICoursesRepository coursesRepository;
     private CoursesMapper coursesMapper;
+    private IBrandRepository brandRepository;
+    private IBrandMapper brandMapper;
+    private ICategoryMapper categoryMapper;
 
     @Autowired
-    ModulesRestController(ICoursesRepository coursesRepository, CoursesMapper coursesMapper) {
+    ModulesRestController(ICoursesRepository coursesRepository, CoursesMapper coursesMapper,IBrandRepository brandRepository,ICategoryMapper categoryMapper,IBrandMapper brandMapper) {
         this.coursesRepository = coursesRepository;
         this.coursesMapper = coursesMapper;
+        this.brandRepository = brandRepository;
+        this.categoryMapper = categoryMapper;
+        this.brandMapper = brandMapper;
     }
 
     @RequestMapping(value = {"/getFeaturedModules/", "/getFeaturedModules"}, method = RequestMethod.GET,
@@ -128,29 +141,6 @@ System.out.println("the value for view " + view);
         }
         FeaturedList featuredList = new FeaturedList();
         featuredList.setIID(4);
-//      List<Courses> featuredCourses = coursesRepository.findByISiteAndFeaturedListAndBActiveOrderByVName(1,featuredList,1);
-//      if(featuredCourses != null){
-//          System.out.println( featuredCourses.size());
-//      }
-//    List<Courses> allCourses = coursesRepository.findByISiteAndIOwnerGroupIDAndBActiveOrderByVName(1,0,1);
-//      if(allCourses != null){
-//          System.out.println( allCourses.size());
-//      }
-//Section sectionEntity = new Section();
-//sectionEntity.setIID(1);
-//       List<Courses> sectionCourses = coursesRepository.findByISiteAndSectionAndBActiveOrderByVName(1,sectionEntity,1);
-//      if(sectionCourses != null){
-//          System.out.println( sectionCourses.size());
-//      }
-        
-        
-        //  mergedCourses.addAll(featuredCourses);
-//     List<Courses> accreditatedCourses = coursesRepository.findByISiteAndBAccredAndBActiveOrderByVName(1,1,1);
-        //    mergedCourses.addAll(accreditatedCourses);
-//      for(Courses courses:mergedCourses){
-//          System.out.println(courses.toString());
-//      }
-//       return  featuredCourses;
         List<CoursesDto> coursesDtos = new ArrayList<>(mergedCourses.size());
 
         for (Courses courses : mergedCourses) {
@@ -159,6 +149,32 @@ System.out.println("the value for view " + view);
         }
 
         return coursesDtos;
+    }
+     @RequestMapping(value = {"/getAllBrands/", "/getAllBrands"}, method = RequestMethod.GET,
+            consumes = MediaType.ALL_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<BrandDto> getBrandList(@RequestParam(name = "view", required = false) String view) {
+        List<Brand> brands = brandRepository.findAll();
+         List<BrandDto> brandDtos = new ArrayList<>(brands.size());
+
+        for (Brand brand : brands) {
+            System.out.println("image name-->" + brand.getIID()+ brand.getVName());
+            brandDtos.add(brandMapper.asBrandDto(brand));
+        }
+        return brandDtos;
+    }
+      @RequestMapping(value = {"/getAllCategories/", "/getAllCategories"}, method = RequestMethod.GET,
+            consumes = MediaType.ALL_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<CategoryDto> getCategoryList(@RequestParam(name = "view", required = false) String view) {
+        List<Categories> categories = coursesRepository.findByBrands_BActiveAndBActiveOrderByVName(1, 1);
+         List<CategoryDto> categoryDtos = new ArrayList<>(categories.size());
+
+        for (Categories category : categories) {
+            System.out.println("image name-->" + category.getIID()+ category.getVName());
+            categoryDtos.add(categoryMapper.asCategoryDto(category));
+        }
+        return categoryDtos;
     }
 
 }

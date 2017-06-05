@@ -145,6 +145,16 @@ export const routes: Routes = [
     path: 'educationmodules',
     pathMatch: 'prefix',
     loadChildren: 'app/education-modules/education-modules.module',
+  },
+  {
+    path: 'categorylist',
+    pathMatch: 'prefix',
+    loadChildren: 'app/category-list/category-list.module',
+  },
+   {
+    path: 'brandslist',
+    pathMatch: 'prefix',
+    loadChildren: 'app/brands-list/brands-list.module',
     },
 ];
 

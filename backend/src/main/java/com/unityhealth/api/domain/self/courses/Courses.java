@@ -11,10 +11,6 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.Where;
 
 /**
  *
@@ -201,7 +197,11 @@ public class Courses implements Serializable {
     private Integer iRequired;
     @Column(name = "iRestrictedDisplayType")
     private Integer iRestrictedDisplayType;
-    
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "tblcategorycourseassoc" , joinColumns = @JoinColumn(name = "iCourseID", referencedColumnName = "iCourseID"), inverseJoinColumns = @JoinColumn(name = "iCatID", referencedColumnName = "iID"))
+    private Set<Categories> categories;
+
+   
 //     @OneToMany(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "iModuleID", referencedColumnName = "iCourseID")
 //     @Fetch(FetchMode.JOIN)
@@ -714,6 +714,13 @@ public class Courses implements Serializable {
     @Override
     public String toString() {
         return "com.unityhealth.api.domain.self.courses.Courses[ iID=" + iID + " " + iCourseID + " " + vName + " ]";
+    }
+     public Set<Categories> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Categories> categories) {
+        this.categories = categories;
     }
     
 }

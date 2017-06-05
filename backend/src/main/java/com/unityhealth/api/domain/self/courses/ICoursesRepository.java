@@ -27,4 +27,5 @@ public interface ICoursesRepository extends JpaRepository<Courses,Integer>{
       List<Courses>  findByISiteAndFeaturedListAndBActiveOrderByVName(Integer iSite,FeaturedList featuredList,Integer bActive);
       List<Courses>  findByISiteAndBAccredAndBActiveOrderByVName(Integer iSite,Integer bAccred,Integer bActive);
        List<Courses>  findByISiteAndSectionAndBActiveOrderByVName(Integer iSite,Section section,Integer bActive);
+        List<Categories>  findByBrands_BActiveAndBActiveOrderByVName(Integer bBActive,Integer bActive);
 }

@@ -9,7 +9,7 @@ export class FeaturedHomeService extends BaseService<Module> {
 
   constructor(_authService: AuthService,
               _http: Http) {
-    super('/api/util', _authService, _http);
+    super('/api/modules', _authService, _http);
   }
 
   getHomeModules(): Observable<Module[]> {
