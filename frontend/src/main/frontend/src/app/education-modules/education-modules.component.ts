@@ -14,6 +14,8 @@ export class EducationModulesComponent implements OnInit, OnDestroy {
  paramSub: Subscription;
  modules: Module[];
  view:string;
+ brandId:string;
+ categoryId:string;
  constructor(private _route: ActivatedRoute,
               private _router: Router,
               private educationModulesService: EducationModulesService) {
@@ -23,8 +25,12 @@ export class EducationModulesComponent implements OnInit, OnDestroy {
 
 
       this.view = params['view'];
+      this.brandId = params['brandId'];
+      this.categoryId = params['categoryId'];
       console.log('value for view' + this.view);
-      this.educationModulesService.getHomeModules(this.view).subscribe(
+       console.log('value for brandId' + this.brandId);
+        console.log('value for brandId' + this.categoryId);
+      this.educationModulesService.getHomeModules(this.view,this.brandId,this.categoryId).subscribe(
           modules => {
             this.modules = modules;
             console.log("inside this.educationModulesService.getHomeModules()");
@@ -39,6 +45,6 @@ export class EducationModulesComponent implements OnInit, OnDestroy {
  }
 
    ngOnDestroy() {
-    this.paramSub.unsubscribe();
+   // this.paramSub.unsubscribe();
   }
 }

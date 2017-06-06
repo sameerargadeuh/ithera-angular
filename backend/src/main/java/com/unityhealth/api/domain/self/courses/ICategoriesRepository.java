@@ -13,6 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Sameer S Argade
  */
 public interface ICategoriesRepository extends JpaRepository<Categories,Integer> {
- 
+ //List<Categories>  findByBrands_BActiveAndBActiveOrderByVName(Integer bBActive,Integer bActive);
     
 }

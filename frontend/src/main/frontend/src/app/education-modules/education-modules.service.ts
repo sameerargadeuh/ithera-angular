@@ -14,13 +14,23 @@ export class EducationModulesService extends BaseService<Module> {
     super('/api/modules', _authService, _http);
   }
 
-  getHomeModules(view: string): Observable<Module[]> {
+  getHomeModules(view: string,brandId?:string,categoryId?:string): Observable<Module[]> {
     let params: URLSearchParams = new URLSearchParams();
 
     if (view !== undefined) {
       params.set('view', view);
     } else {
       params.set('view', 'Featured');
+    }
+     if (brandId !== undefined) {
+      params.set('brandId', brandId);
+    } else {
+      params.set('brandId', '');
+    }
+     if (categoryId !== undefined) {
+      params.set('categoryId', categoryId);
+    } else {
+      params.set('categoryId', '');
     }
 
 

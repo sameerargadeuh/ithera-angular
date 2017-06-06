@@ -33,6 +33,6 @@ export class FeaturedHomeComponent implements OnInit, OnDestroy {
  }
 
    ngOnDestroy() {
-    this.paramSub.unsubscribe();
+    //this.paramSub.unsubscribe();
   }
 }

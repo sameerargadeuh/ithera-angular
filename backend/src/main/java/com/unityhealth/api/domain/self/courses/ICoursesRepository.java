@@ -27,5 +27,11 @@ public interface ICoursesRepository extends JpaRepository<Courses,Integer>{
       List<Courses>  findByISiteAndFeaturedListAndBActiveOrderByVName(Integer iSite,FeaturedList featuredList,Integer bActive);
       List<Courses>  findByISiteAndBAccredAndBActiveOrderByVName(Integer iSite,Integer bAccred,Integer bActive);
        List<Courses>  findByISiteAndSectionAndBActiveOrderByVName(Integer iSite,Section section,Integer bActive);
-        List<Categories>  findByBrands_BActiveAndBActiveOrderByVName(Integer bBActive,Integer bActive);
+        List<Courses>  findByBrands_BActiveAndBActiveOrderByVName(Integer bBActive,Integer bActive);
+        @Query("SELECT distinct courses.categories FROM Courses courses where courses.brands.bActive=?1 and courses.bActive=?2")
+        List<Categories>  getCategoriesByBrandsBActiveAndBActiveOrderByCategories_VName(Integer bBActive,Integer bActive);
+        List<Courses> findByISiteAndBrands_iIDAndBrands_BActiveOrderByVName(Integer iSite,Integer iID,Integer bActive);
+        List<Courses> findByISiteAndCategories_iIDAndBActiveOrderByVName(Integer iSite,Integer iID,Integer bActive);
+         List<Courses> findCategoriesByBrandsBActiveAndBActiveOrderByCategories_VName(Integer bBActive,Integer bActive);
+         
 }

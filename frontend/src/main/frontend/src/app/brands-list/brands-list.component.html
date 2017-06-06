@@ -1,10 +1,42 @@
+ <div class="col-md-2 md-margin-bottom-40">
+	    <ul id="category_list" class="list-group sidebar-nav-v1 margin-bottom-40">
+	        <li class="list-group-item">
+	             <a [routerLink]="['/educationmodules', {view: 'All'}]"><i class="fa fa-bar-chart-o"></i> All</a>
+	        </li>
+	        <li class="list-group-item">
+	             <a [routerLink]="['/educationmodules', {view: 'Featured'}]"><i class="fa fa-user"></i> Featured</a>
+	        </li>
+	        <li class="list-group-item ">
+	             <a [routerLink]="['/educationmodules', {view: 'Accredited'}]"><i class="fa fa-group"></i> Accredited</a>
+	        </li>
+	        <li class="list-group-item ">
+	             <a [routerLink]="['/brandslist']"><i class="fa fa-cubes"></i> Brand</a>
+	        </li>
+	        <li class="list-group-item">
+	             <a [routerLink]="['/categorylist']"><i class="fa fa-comments"></i> Category</a>
+	        </li>
+	        <li class="list-group-item ">
+	             <a [routerLink]="['/educationmodules', {view: 'Product'}]"><i class="fa fa-user"></i> Product</a>
+	        </li>
+	        <li class="list-group-item ">
+	             <a [routerLink]="['/educationmodules', {view: 'Condition'}]"><i class="fa fa-user"></i> Condition</a>
+	        </li>
+	    </ul>
+	    <hr>
+		<!-- <c:set var="showSponsors">${uhfn:isLabelEnabled("site.sponsors", siteConfig)}</c:set>
+		<c:if test="${showSponsors}">
+		  <c:import url="inc_sponsorLogos.jsp" />
+		</c:if> 		-->
+	    <div class="margin-bottom-50"></div>
+	</div>
+
   <div *ngFor="let brand of brands">
 <div class="col-md-3" style="text-align:center;">
 						<div class="service-block-v7">
-							<a class="color-blue">
+							<a class="color-blue" [routerLink]="['/educationmodules', {view: 'Brand', brandId: '' + brand.iID }]">
 								<span class="brandlist">
-									<img src="/assets/images/brands/{{brand.iid}}.png" class="img-responsive"/><br/>
-									{{brand.vname}}
+									<img src="/assets/images/brands/{{brand.iID}}.png" class="img-responsive"/><br/>
+									{{brand.vName}}
 								</span>
 							</a>
 	                    </div>

@@ -1,9 +1,9 @@
   <div *ngFor="let category of categories">
 <div class="col-md-3" style="text-align:center;">
 				<div class="catlist">
-					<a class="color-blue" >
+					<a class="color-blue" [routerLink]="['/educationmodules', {view: 'Category', categoryId: '' + category.iID }]">
 						<span style="display:inline-block;height:100%; width:100%;">
-						{{category.vname}}
+						{{category.vName}}
 						</span>
 					</a>
 				</div>

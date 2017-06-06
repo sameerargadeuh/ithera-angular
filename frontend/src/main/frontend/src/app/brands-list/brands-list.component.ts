@@ -19,7 +19,7 @@ export class BrandsListComponent implements OnInit, OnDestroy {
           brands => {
             this.brands = brands;
             console.log("inside this.BrandsListComponent.getBrandsList()");
-            console.log(brands[1].vname);
+            console.log(brands[1].vName);
 
           },
           err => {
@@ -28,6 +28,6 @@ export class BrandsListComponent implements OnInit, OnDestroy {
 
   }
  ngOnDestroy() {
-    this.paramSub.unsubscribe();
+   // this.paramSub.unsubscribe();
   }
 }

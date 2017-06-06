@@ -10,6 +10,7 @@ import com.unityhealth.api.domain.self.courses.Categories;
 import com.unityhealth.api.domain.self.courses.Courses;
 import com.unityhealth.api.domain.self.courses.FeaturedList;
 import com.unityhealth.api.domain.self.courses.IBrandRepository;
+import com.unityhealth.api.domain.self.courses.ICategoriesRepository;
 import com.unityhealth.api.domain.self.courses.ICoursesRepository;
 import com.unityhealth.api.domain.self.courses.Section;
 import com.unityhealth.api.dto.brand.BrandDto;
@@ -20,6 +21,8 @@ import com.unityhealth.api.dto.courses.CoursesDto;
 import com.unityhealth.api.dto.courses.CoursesMapper;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 /**
  *
@@ -46,6 +50,7 @@ public class ModulesRestController {
     private IBrandRepository brandRepository;
     private IBrandMapper brandMapper;
     private ICategoryMapper categoryMapper;
+    private ICategoriesRepository categoriesRepository;
 
     @Autowired
     ModulesRestController(ICoursesRepository coursesRepository, CoursesMapper coursesMapper,IBrandRepository brandRepository,ICategoryMapper categoryMapper,IBrandMapper brandMapper) {
@@ -96,11 +101,13 @@ public class ModulesRestController {
     @RequestMapping(value = {"/getHomeFeaturedModules/", "/getHomeFeaturedModules"}, method = RequestMethod.GET,
             consumes = MediaType.ALL_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<CoursesDto> getHomeFeaturedModules(@RequestParam(name = "view", required = false) String view) {
+    public List<CoursesDto> getHomeFeaturedModules(@RequestParam(name = "view", required = false) String view,@RequestParam(name = "brandId", required = false) String brandId,@RequestParam(name = "categoryId", required = false) String categoryId) {
 List<Courses> mergedCourses = new ArrayList<Courses>();
 //        List<Integer> paramList = new ArrayList<Integer>();
 //        paramList.add(4);
 System.out.println("the value for view " + view);
+System.out.println("the value for brandId >>>>>>>>>>>>>>>>>>>>>> " + brandId);
+System.out.println("the value for brandId >>>>>>>>>>>>>>>>>>>>>> " + categoryId);
         switch (view) {
             case "Featured":
                 FeaturedList featuredList = new FeaturedList();
@@ -130,6 +137,21 @@ System.out.println("the value for view " + view);
                 }
                  mergedCourses.addAll(conditionCourses);
                 break;
+             case "Brand":
+                
+                List<Courses> brandCourses = coursesRepository.findByISiteAndBrands_iIDAndBrands_BActiveOrderByVName(1, Integer.parseInt(brandId),1);
+                if (brandCourses != null) {
+                    System.out.println(brandCourses.size());
+                }
+                 mergedCourses.addAll(brandCourses);
+                break; 
+             case "Category":
+                 List<Courses> categoryCourses = coursesRepository.findByISiteAndCategories_iIDAndBActiveOrderByVName( 1, Integer.parseInt(categoryId),1);
+                  if (categoryCourses != null) {
+                    System.out.println(categoryCourses.size());
+                }
+                   mergedCourses.addAll(categoryCourses);
+                 break;
 
             default:
                 List<Courses> allCourses = coursesRepository.findByISiteAndIOwnerGroupIDAndBActiveOrderByVName(1, 0, 1);
@@ -166,15 +188,22 @@ System.out.println("the value for view " + view);
       @RequestMapping(value = {"/getAllCategories/", "/getAllCategories"}, method = RequestMethod.GET,
             consumes = MediaType.ALL_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<CategoryDto> getCategoryList(@RequestParam(name = "view", required = false) String view) {
-        List<Categories> categories = coursesRepository.findByBrands_BActiveAndBActiveOrderByVName(1, 1);
-         List<CategoryDto> categoryDtos = new ArrayList<>(categories.size());
-
-        for (Categories category : categories) {
+    public Set<CategoryDto> getCategoryList(@RequestParam(name = "view", required = false) String view) {
+       List<Categories> categories = coursesRepository.getCategoriesByBrandsBActiveAndBActiveOrderByCategories_VName(1, 1);
+      
+       // List<Courses> coursesList = coursesRepository.findCategoriesByBrandsBActiveAndBActiveOrderByCategories_VName(1, 1);
+        
+         List<CategoryDto> categoryDtos = new ArrayList<>();
+         Set<CategoryDto> categoryDtoSet = new HashSet<>();
+       //  for(Courses courses:coursesList){
+         //     Set<Categories> categories = courses.getCategories();
+             for (Categories category : categories) {
             System.out.println("image name-->" + category.getIID()+ category.getVName());
-            categoryDtos.add(categoryMapper.asCategoryDto(category));
-        }
-        return categoryDtos;
+            //categoryDtos.add(categoryMapper.asCategoryDto(category));
+            categoryDtoSet.add(categoryMapper.asCategoryDto(category));
+          }
+        //}
+        return categoryDtoSet;
     }
 
 }

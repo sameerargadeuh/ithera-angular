@@ -19,7 +19,7 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
           categories => {
             this.categories = categories;
             console.log("inside this.CategoriesListComponent.getCategoryList()");
-            console.log(categories[1].vname);
+            console.log(categories[1].vName);
 
           },
           err => {
@@ -28,6 +28,6 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
 
   }
  ngOnDestroy() {
-    this.paramSub.unsubscribe();
+   // this.paramSub.unsubscribe();
   }
 }

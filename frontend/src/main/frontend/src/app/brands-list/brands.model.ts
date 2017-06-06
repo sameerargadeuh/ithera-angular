@@ -1,5 +1,5 @@
 export interface Brand {
 
-  iid:number;
-  vname:string;
+  iID:number;
+  vName:string;
 }
