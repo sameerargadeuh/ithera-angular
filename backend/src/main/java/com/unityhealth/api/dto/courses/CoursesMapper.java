@@ -12,7 +12,10 @@ import com.unityhealth.api.domain.self.courses.Courses;
  *
  * @author Sameer S Argade
  */
-@Mapper(withIoC = IoC.SPRING, withIgnoreMissing = IgnoreMissing.ALL)
+@Mapper(withIoC = IoC.SPRING, withIgnoreMissing = IgnoreMissing.ALL,  withCustomFields = {
+        @Field({"accreditation.iID", "iAccredTypeID"}),
+        @Field({"accreditation.vName", "vAccredName"})
+    })
 public interface CoursesMapper {
     
     CoursesDto asCoursesDto(Courses in);

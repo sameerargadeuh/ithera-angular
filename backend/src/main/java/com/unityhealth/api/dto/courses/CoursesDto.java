@@ -64,7 +64,7 @@ private int bRestrictedByCode;
     private Integer bAccred;
   
 
-//private int iAccredTypeID;
+    private int iAccredTypeID;
     private Integer bAccredPending;
 
     private Float iAccredPoints;
@@ -95,6 +95,16 @@ private int bRestrictedByCode;
     private Integer iRequired;
 
     private Integer iRestrictedDisplayType;
+    
+    private String vAccredName;
+
+    public String getvAccredName() {
+        return vAccredName;
+    }
+
+    public void setvAccredName(String vAccredName) {
+        this.vAccredName = vAccredName;
+    }
     
     public Integer getIID() {
         return iID;
@@ -352,13 +362,13 @@ private int bRestrictedByCode;
         this.bAccred = bAccred;
     }
 
-//    public int getIAccredTypeID() {
-//        return iAccredTypeID;
-//    }
-//
-//    public void setIAccredTypeID(int iAccredTypeID) {
-//        this.iAccredTypeID = iAccredTypeID;
-//    }
+    public int getIAccredTypeID() {
+        return iAccredTypeID;
+    }
+
+    public void setIAccredTypeID(int iAccredTypeID) {
+        this.iAccredTypeID = iAccredTypeID;
+    }
 
     public Integer getBAccredPending() {
         return bAccredPending;

@@ -19,10 +19,7 @@ import com.unityhealth.api.dto.categories.CategoryDto;
 import com.unityhealth.api.dto.categories.ICategoryMapper;
 import com.unityhealth.api.dto.courses.CoursesDto;
 import com.unityhealth.api.dto.courses.CoursesMapper;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -167,7 +164,11 @@ System.out.println("the value for brandId >>>>>>>>>>>>>>>>>>>>>> " + categoryId)
 
         for (Courses courses : mergedCourses) {
             System.out.println("image name-->" + courses.getVImage() + courses.getVDesc());
-            coursesDtos.add(coursesMapper.asCoursesDto(courses));
+            CoursesDto coursesDto = coursesMapper.asCoursesDto(courses);
+            if (checkIsNew(courses.getDtDatePublished())){
+                coursesDto.setBNew(1);
+            }
+            coursesDtos.add(coursesDto);
         }
 
         return coursesDtos;
@@ -205,5 +206,18 @@ System.out.println("the value for brandId >>>>>>>>>>>>>>>>>>>>>> " + categoryId)
         //}
         return categoryDtoSet;
     }
-
+  private boolean checkIsNew(Date datePub) {
+        boolean isNew = false;
+        if (datePub != null) {
+            java.util.Date currentDate = new java.util.Date();
+            Calendar cal = new GregorianCalendar();
+            cal.setTime(datePub);
+            cal.add(Calendar.MONTH, 1);
+            java.util.Date endNew = cal.getTime();
+            if (endNew.after(currentDate)) {
+                isNew = true;
+            }
+        }        
+        return isNew;
+    }
 }

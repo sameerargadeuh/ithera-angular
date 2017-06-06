@@ -59,7 +59,7 @@
                                 <div class="thumbnail-img">
                                     <div class="overflow-hidden">
                                         <img class="img-responsive" src="/assets/images/module-thumbs/{{module.vimage}}" alt=""/>
-                                        <!--<c:if test="${module.is_New}"><div class="easy-bg-v2 rgba-red">New</div></c:if>-->
+                                        <!--<c:if test="${module.is_New}">--><div *ngIf="module.bnew == 1"> <div class="easy-bg-v2 rgba-red">New</div></div> <!--</c:if>-->
                                         <!--<c:if test="${moduleStatus.trStatus eq 'user-passed'}"><div class="easy-bg-v2 easy-bg-v2-complete rgba-blue">Completed</div></c:if>-->
                                     </div>
                                 </div>
@@ -74,13 +74,17 @@
                                       <div class="row">
 	                                    <div class="col-md-7 col-sm-7 align-line">
 	                                        <div class="points-overlay"> {{ module.rewardsPoints }} pts </div>
-	                                        <!--<ithera:accreditation action="get_accreditation_by_id" id="accreditation" accreditationId="${module.accredTypeID}" />
-	                                        <c:if test="${module.accredited eq 'true'}">
-	                                            <span style="vertical-align: baseline;" class="label rounded label-primary"><i class="fa fa-check-circle"></i> <b>${accreditation.name}</b></span>
-	                                        </c:if>
-	                                        <c:if test="${module.accredPending eq 'true'}">
-	                                            <span style="vertical-align: baseline;" class="label rounded label-primary"><i class="fa fa-check-circle"></i> <b>${accreditation.name}</b> Pending</span>
-	                                        </c:if>-->
+
+                                            <div *ngIf="module.baccred == 1">
+	                                            <span style="vertical-align: baseline;" class="label rounded label-primary"><i class="fa fa-check-circle"></i> <b>{{module.vAccredName}}</b></span>
+                                              </div>
+	                                       <!-- </c:if>
+	                                        <c:if test="${module.accredPending eq 'true'}">-->
+                                             <div *ngIf="module.baccredPending == 1">
+	                                            <span style="vertical-align: baseline;" class="label rounded label-primary"><i class="fa fa-check-circle"></i> <b>{{module.vAccredName}}</b> Pending</span>
+                                              </div>
+	                                        <!--</c:if>-->
+
 	                                    </div>
 	                                    <div class="col-md-5 col-sm-5">
 	                                        <!--<c:choose>
