@@ -32,6 +32,9 @@
                             <!--<li ${page.i_section == 'Manager Console' ? 'class="active"':''}><a href="page.jsp?p=Manager-Console-Home">Manager Console</a></li>-->
                             <!-- End Manager Console -->
                         <!--</c:if>-->
+                         {{ _authService.getUserData().managerAccess }}
+                        <li><a [routerLink]="['/managerconsole']" >Manager Console</a></li>
+
                         <!-- iRewards -->
                         <li ><a href="page.jsp?p=iRewards">iRewards</a></li>
                         <!-- End iRewards -->

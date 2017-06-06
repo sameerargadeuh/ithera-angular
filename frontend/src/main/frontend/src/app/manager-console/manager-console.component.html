@@ -1,0 +1,124 @@
+
+
+<!--<c:set var="siteContent">${initParam['SITE_LOCATION']}/config/properties/sitecontent.properties</c:set>
+<c:set var="siteLabels">${initParam['SITE_LOCATION']}/config/properties/labels.properties</c:set>
+<c:set var="siteConfig">${initParam['SITE_LOCATION']}/config/properties/siteconfig.properties</c:set>
+<c:set var="managerID">${sessionScope.s_userID}</c:set>
+
+<c:if test="${empty account}">
+    <ithera:account id="account" action="get-account-by-user-id" userID="${sessionScope.s_userID}" />
+</c:if>
+<ithera:stores id="stores" action="stores-by-account" accountid="${account.accountID}"/>
+<ithera:storestats id="storestats" breezeUserId="${managerID}" />
+<c:set var="storesLength" value="${fn:length(stores)}"/>
+-->
+<div class="row margin-top-10">
+    <div class="col-md-9">
+        <a id="stores-top" href="#stores-top"></a>
+        <div class="headline"><h3 id="my-stores">Stores</h3></div>
+
+	    <!-- STORES -->
+	    <div id="home-browser-stores" class="table-responsive">
+		    <table class="table table-bordered table-striped">
+		        <thead>
+		            <tr>
+		                <th>Store</th>
+
+                        <!--
+		                <th>${uhfn:displayLabel("vLocLocality1", siteLabels)}</th>
+		                <th class="text-center">${uhfn:displayLabel("vLocRegion", siteLabels)}</th>
+		                <th class="text-center">${uhfn:displayLabel("vLocPostcode", siteLabels)}</th>
+		                <th class="text-center">Users</th>
+		                <th class="text-center">In Progress</th>
+		                <th class="text-center">Completed</th>
+		                <th class="text-center"></th>
+
+                        -->
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <!--<c:if test="${storesLength > 0}">
+			            <c:if test="${not empty storestats}">
+			                <c:forEach var="storestat" items="${storestats}">
+			                <tr>
+			                    <td><a class="color-blue" href="page.jsp?p=Manager-Console-Store&sid=${storestat.storeID}">${storestat.storeName}</a></td>
+			                    <td>${storestat.locality1}</td>
+			                    <td class="text-center">${storestat.region}</td>
+			                    <td class="text-center">${storestat.postcode}</td>
+			                    <td class="text-center">${storestat.numUsers}</td>
+			                    <td class="text-center">${storestat.trIncomplete}</td>
+			                    <td class="text-center">${storestat.trCompleted}</td>
+			                    <td class="text-center"><a href="page.jsp?p=Manager-Console-Store&sid=${storestat.storeID}"><i title="View" class="fa fa-pencil-square-o iconsize"></i></a></td>
+			                </tr>
+			                </c:forEach>  
+			            </c:if>
+	                </c:if>		
+                    -->
+                    
+                            
+		        </tbody>
+		    </table>	    	    	    
+		</div>                
+	
+	   <!-- <c:if test="${storesLength < 1}">-->
+		    <div class="alert alert-warning">
+		        <i class="fa fa-exclamation-triangle"></i> There are currently no stores assigned to your account to manage, if you believe this is incorrect please contact us on 1300 864 894 
+		    </div>
+	    <!--</c:if>    -->  
+
+        <!--          
+        <c:if test="${storesLength > 0}">
+        -->
+            
+			<!-- TRAINING PLANS -->
+			<!-- 
+                <ithera:trainingplanstats id="trainingPlansStats" creatorUserID="${managerID}" />
+                -->
+			<div class="headline"><h3 id="my-training-plans">Training Plans</h3></div>
+			<div id="home-browser-trainingplans" class="table-responsive">
+			    <table class="table table-bordered table-striped">
+			        <thead>
+			            <tr>
+			                <th>Name</th>
+			                <th class="text-center">Date</th>
+			                <th class="text-center">Modules</th>
+			                <th class="text-center">Members</th>
+			                <th class="text-center">Completed</th>
+			                <th class="text-center">% Complete</th>
+			                <th></th>
+			                <th></th>
+			                <th></th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <!--<c:if test="${not empty trainingPlansStats}">
+			                <c:forEach var="planStats" items="${trainingPlansStats}" >
+			                    <c:if test="${empty planStats.trainingPlan.dateDeleted}">
+			                        <tr>
+			                            <td><a class="color-blue" href="page.jsp?p=Manager-Console-Training-Plan&tid=${planStats.trainingPlan.id}">${planStats.trainingPlan.name}</a></td>
+			                            <td class="text-center"><fmt:formatDate value="${planStats.trainingPlan.date}" pattern="dd MMM yyyy"/></td>
+			                            <td class="text-center">${planStats.numModules}</td>
+			                            <td class="text-center">${planStats.numMembers}</td>
+			                            <td class="text-center">${planStats.membersCompleted} / ${planStats.numMembers}</td>
+			                            <td class="text-center">
+			                                <div class="warning-${uhfn:warningColour(planStats.membersCompletedPercent)}"><fmt:formatNumber type="number" maxFractionDigits="0" value="${planStats.membersCompletedPercent}" /> %</div>
+			                            </td>
+			                            <td class="text-center"><a href="page.jsp?p=Manager-Console-Training-Plan&tid=${planStats.trainingPlan.id}"><i title="View" class="fa fa-pencil-square-o iconsize"></i> </a></td>
+			                            <td class="text-center"><a href="page.jsp?p=Manager-Console-Training-Plan-Edit&action=edit&tid=${planStats.trainingPlan.id}"><i title="Edit" class="fa fa-pencil iconsize"></i> </a></td>
+			                            <td class="text-center"><a href="page.jsp?p=Manager-Console-Training-Plan-Remove&tid=${planStats.trainingPlan.id}"><i title="Delete" title="View" class="fa fa-trash iconsize"></i> </a></td>
+			                        </tr>
+			                        </c:if>
+			                </c:forEach>  
+			            </c:if>-->
+			        </tbody>
+			    </table>
+			</div>
+			
+			<form name="newTrainingPlanForm" action="page.jsp" method="post">
+			    <input type="hidden" name="p" value="Manager-Console-Training-Plan-Add" />
+			    <input type="hidden" name="action" value="add" />
+			    <button type="submit" class="pull-right btn-u btn-u-blue"><i class="fa fa-plus"></i> New Training Plan</button>
+			</form>
+		<!--</c:if> -->
+    </div>
+</div>

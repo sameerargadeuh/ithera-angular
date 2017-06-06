@@ -46,7 +46,7 @@ public class CustomUserDetails implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
        
         ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<>();
- if((account != null) && (account.getProffesion().equalsIgnoreCase("Head_Office_Buyer") || account.getProffesion().equalsIgnoreCase("Dispensary_Assistant") || account.getProffesion().equalsIgnoreCase("Pharmacy_Assistant") )){
+ if((account != null) && (account.getProfesion().equalsIgnoreCase("Head_Office_Buyer") || account.getProfesion().equalsIgnoreCase("Dispensary_Assistant") || account.getProfesion().equalsIgnoreCase("Pharmacy_Assistant") )){
      grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_RESTRICTED_USER")); 
         }else{
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));    

@@ -33,11 +33,27 @@ public class CustomTokenEnhancer implements TokenEnhancer {
             additionalInfo.put("groupIds", getGroupIds(user.getAccount().getGroups()));
             
             additionalInfo.put("sherpaOptIn", user.getAccount().getSherpaOptIn());
+            
+            if (user.getAccount().getUserType().equals("store_manager") || user.getAccount().getUserType().equals("store_owner")) {
+                additionalInfo.put("managerAccess", true);
+            } else {
+                additionalInfo.put("managerAccess", false);
+            }
+            
+            
+            
+            
         }else{
           Integer[]groupIds = {4};
             additionalInfo.put("groupIds", groupIds );
             
             additionalInfo.put("sherpaOptIn", user.getCompanyUsers().getSherpaOptIn());
+            
+             if (user.getAccount().getUserType().equals("store_manager") || user.getAccount().getUserType().equals("store_owner")) {
+                additionalInfo.put("managerAccess", true);
+            } else {
+                additionalInfo.put("managerAccess", false);
+            }
         }
         
         try{

@@ -40,10 +40,15 @@ public class Account {
     private Store store;
     
     @Column(name = "vProfession", length = 32)
-    private String proffesion;
+    private String profesion;
     
     @Column(name = "bSherpaOptIn")
     private Integer sherpaOptIn;
+    
+    @Column (name = "vUserType")
+    private String userType;
+
+    
 
     public Integer getId() {
         return id;
@@ -84,7 +89,7 @@ public class Account {
     public void setSalt(String salt) {
         this.salt = salt;
     }
-
+    
    /* public Set<AccountStore> getAccountStores() {
         return accountStores;
     }
@@ -101,12 +106,12 @@ public class Account {
         return groups;
     }
 
-    public String getProffesion() {
-        return proffesion;
+    public String getProfesion() {
+        return profesion;
     }
 
-    public void setProffesion(String proffesion) {
-        this.proffesion = proffesion;
+    public void setProfesion(String profesion) {
+        this.profesion = profesion;
     }
 
     public Integer getSherpaOptIn() {
@@ -124,6 +129,13 @@ public class Account {
     public void setStore(Store store) {
         this.store = store;
     }
+    
+        public String getUserType() {
+        return userType;
+    }
 
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
   
 }

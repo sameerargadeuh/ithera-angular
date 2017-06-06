@@ -155,6 +155,11 @@ export const routes: Routes = [
     path: 'brandslist',
     pathMatch: 'prefix',
     loadChildren: 'app/brands-list/brands-list.module',
+  },
+  {
+    path: 'managerconsole',
+    pathMatch: 'prefix',
+   loadChildren: 'app/manager-console/manager-console.module',
     },
 ];
 
