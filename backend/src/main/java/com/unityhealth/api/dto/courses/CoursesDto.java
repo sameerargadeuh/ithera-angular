@@ -29,9 +29,13 @@ private int bRestrictedByCode;
     private Integer iType;
     private Integer iCompanyID;
     private Integer iBrandID;
+
+   
     private Integer iReportID;
     private String vImage;
     private int iRewardPoints;
+    private int tierOnePoints;
+    private int tierTwoPoints;
     private int bComingSoon;
     private Date dtDatePublished;
     private Date dtClosed;
@@ -137,7 +141,13 @@ private int bRestrictedByCode;
     public void setICourseID(Integer iCourseID) {
         this.iCourseID = iCourseID;
     }
+ public Integer getiBrandID() {
+        return iBrandID;
+    }
 
+    public void setiBrandID(Integer iBrandID) {
+        this.iBrandID = iBrandID;
+    }
     public String getVName() {
         return vName;
     }
@@ -538,6 +548,22 @@ private int bRestrictedByCode;
         int hash = 0;
         hash += (iID != null ? iID.hashCode() : 0);
         return hash;
+    }
+
+    public int getTierOnePoints() {
+        return tierOnePoints;
+    }
+
+    public void setTierOnePoints(int tierOnePoints) {
+        this.tierOnePoints = tierOnePoints;
+    }
+
+    public int getTierTwoPoints() {
+        return tierTwoPoints;
+    }
+
+    public void setTierTwoPoints(int tierTwoPoints) {
+        this.tierTwoPoints = tierTwoPoints;
     }
 
   

@@ -33,6 +33,8 @@ vimage:string;
  iaccredTypeID:number;
  vAccredName:string;
  baccredPending:number;
+ tierOnePoints:number;
+ tierTwoPoints:number;
 // iAccredPonumbers:number;
 // vAccredDesc:string;
 // vAccredDetails:string;

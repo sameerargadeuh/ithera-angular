@@ -5,6 +5,9 @@
  */
 package com.unityhealth.api.controllers.rest;
 
+import com.unityhealth.api.domain.self.account.Account;
+import com.unityhealth.api.domain.self.accountStore.AccountStore;
+import com.unityhealth.api.domain.self.accountStore.IAccountStoreRepository;
 import com.unityhealth.api.domain.self.courses.Brand;
 import com.unityhealth.api.domain.self.courses.Categories;
 import com.unityhealth.api.domain.self.courses.Courses;
@@ -12,6 +15,7 @@ import com.unityhealth.api.domain.self.courses.FeaturedList;
 import com.unityhealth.api.domain.self.courses.IBrandRepository;
 import com.unityhealth.api.domain.self.courses.ICategoriesRepository;
 import com.unityhealth.api.domain.self.courses.ICoursesRepository;
+import com.unityhealth.api.domain.self.courses.InvoicePlans;
 import com.unityhealth.api.domain.self.courses.Section;
 import com.unityhealth.api.dto.brand.BrandDto;
 import com.unityhealth.api.dto.brand.IBrandMapper;
@@ -48,14 +52,17 @@ public class ModulesRestController {
     private IBrandMapper brandMapper;
     private ICategoryMapper categoryMapper;
     private ICategoriesRepository categoriesRepository;
+   // private IAccountStoreRepository accountStoreRepository;
 
     @Autowired
-    ModulesRestController(ICoursesRepository coursesRepository, CoursesMapper coursesMapper,IBrandRepository brandRepository,ICategoryMapper categoryMapper,IBrandMapper brandMapper) {
+    ModulesRestController(ICoursesRepository coursesRepository, CoursesMapper coursesMapper,IBrandRepository brandRepository,ICategoryMapper categoryMapper,IBrandMapper brandMapper//,IAccountStoreRepository accountStoreRepository
+    ) {
         this.coursesRepository = coursesRepository;
         this.coursesMapper = coursesMapper;
         this.brandRepository = brandRepository;
         this.categoryMapper = categoryMapper;
         this.brandMapper = brandMapper;
+       // this.accountStoreRepository = accountStoreRepository;
     }
 
     @RequestMapping(value = {"/getFeaturedModules/", "/getFeaturedModules"}, method = RequestMethod.GET,
@@ -165,6 +172,17 @@ System.out.println("the value for brandId >>>>>>>>>>>>>>>>>>>>>> " + categoryId)
         for (Courses courses : mergedCourses) {
             System.out.println("image name-->" + courses.getVImage() + courses.getVDesc());
             CoursesDto coursesDto = coursesMapper.asCoursesDto(courses);
+            
+            if(courses.getInvoicePlans() != null){
+                Object[] ips = courses.getInvoicePlans().toArray();
+                if(ips.length > 0){
+                    InvoicePlans ip =  (InvoicePlans) ips[0];
+            coursesDto.setTierOnePoints(ip.getIPointsTier1());
+            coursesDto.setTierTwoPoints(ip.getIPointsTier2());
+                }
+            
+            }
+           
             if (checkIsNew(courses.getDtDatePublished())){
                 coursesDto.setBNew(1);
             }
@@ -203,6 +221,15 @@ System.out.println("the value for brandId >>>>>>>>>>>>>>>>>>>>>> " + categoryId)
             //categoryDtos.add(categoryMapper.asCategoryDto(category));
             categoryDtoSet.add(categoryMapper.asCategoryDto(category));
           }
+//           List<Object[]> accountStores = accountStoreRepository.findByaccountId(120);
+//           for (Object o[] : accountStores) {
+//    AccountStore c = (AccountStore) o[0];
+//    Account l = (Account) o[1];
+//    
+//    //all the classes: Course, Lesson, Progress and User have the toString() overridden with the database ID;    
+//    System.out.printf("\nUser: %s \n Lesson: %s",l.getUsername(),c.getStore().getGroup().getId());
+//}
+//          System.out.println("Account name-->   "+accountStores.size());
         //}
         return categoryDtoSet;
     }

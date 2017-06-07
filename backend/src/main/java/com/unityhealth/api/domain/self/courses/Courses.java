@@ -11,6 +11,7 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.hibernate.annotations.Where;
 
 /**
  *
@@ -218,6 +219,18 @@ public class Courses implements Serializable {
     @JoinTable(name = "tblmodulesection", joinColumns = @JoinColumn(name = "iModuleID", referencedColumnName = "iCourseID"), inverseJoinColumns = @JoinColumn(name = "iSectionID", referencedColumnName = "iID"))
     private Set<Section>  section;
      
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "courses")
+    @Where(clause = "dtEnd is null")
+    private Set<InvoicePlans> invoicePlans;
+
+    public Set<InvoicePlans> getInvoicePlans() {
+        return invoicePlans;
+    }
+
+    public void setInvoicePlans(Set<InvoicePlans> invoicePlans) {
+        this.invoicePlans = invoicePlans;
+    }
+
     public Courses() {
     }
 
