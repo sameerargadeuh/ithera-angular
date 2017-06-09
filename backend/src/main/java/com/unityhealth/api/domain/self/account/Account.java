@@ -3,18 +3,20 @@ package com.unityhealth.api.domain.self.account;
 import com.unityhealth.api.domain.self.accountStore.AccountStore;
 import com.unityhealth.api.domain.self.group.Group;
 import com.unityhealth.api.domain.self.store.Store;
+import java.io.Serializable;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import org.hibernate.annotations.Where;
 
 /**
  * Created by shanefox on 10/10/2016.
  */
 @Entity
 @Table(name = "tblaccount")
-public class Account {
+public class Account implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -36,7 +38,8 @@ public class Account {
     /*@OneToMany(fetch = FetchType.EAGER, mappedBy = "account", cascade=CascadeType.ALL)
     private Set<AccountStore> accountStores;*/
     @ManyToOne(fetch= FetchType.EAGER)
-    @JoinColumn(name="iStoreID")
+    @JoinColumn(name="iStoreID", columnDefinition = "INT(11) UNSIGNED")
+    @Where(clause = "iStoreID != -1")
     private Store store;
     
     @Column(name = "vProfession", length = 32)
@@ -47,8 +50,13 @@ public class Account {
     
     @Column (name = "vUserType")
     private String userType;
-
     
+    @Column (name = "vStatus", length= 255)
+    private String userStatus;
+    
+    @Column (name = "iBreezeUserID")
+    private Integer breezeID;
+
 
     public Integer getId() {
         return id;
@@ -136,6 +144,22 @@ public class Account {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+    
+     public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
+    }
+    
+    public Integer getBreezeID() {
+        return breezeID;
+    }
+
+    public void setBreezeID(Integer breezeID) {
+        this.breezeID = breezeID;
     }
   
 }

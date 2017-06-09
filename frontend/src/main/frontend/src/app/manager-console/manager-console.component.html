@@ -24,6 +24,8 @@
 		            <tr>
 		                <th>Store</th>
 
+						
+
                         <!--
 		                <th>${uhfn:displayLabel("vLocLocality1", siteLabels)}</th>
 		                <th class="text-center">${uhfn:displayLabel("vLocRegion", siteLabels)}</th>
@@ -34,9 +36,31 @@
 		                <th class="text-center"></th>
 
                         -->
+
+						<th>Store</th>
+		                <th class="text-center">Suburb</th>
+		                <th class="text-center">Postcode</th>
+		                <th class="text-center">Users</th>
+		                <th class="text-center">In Progress</th>
+		                <th class="text-center">Completed</th>
+		                <th class="text-center"></th>
+
+
+
+
 		            </tr>
 		        </thead>
 		        <tbody>
+
+						<tr  *ngFor="let store of accountStores; let i=index ">
+							<td>{{store.storeCount}}</td>
+							<td></td>
+							<td></td>
+							<td>{{store.storeCount}}</td>
+							<td></td>
+							<td></td>
+						</tr>
+
 		            <!--<c:if test="${storesLength > 0}">
 			            <c:if test="${not empty storestats}">
 			                <c:forEach var="storestat" items="${storestats}">

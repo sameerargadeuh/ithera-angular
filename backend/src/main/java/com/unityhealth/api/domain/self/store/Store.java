@@ -13,7 +13,7 @@ public class Store {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "iID")
+    @Column(name = "iID", columnDefinition = "UNSIGNED INT(10)")
     private Integer id;
 
     @ManyToOne(fetch=FetchType.EAGER)

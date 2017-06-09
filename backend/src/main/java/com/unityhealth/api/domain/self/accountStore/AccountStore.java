@@ -25,6 +25,10 @@ public class AccountStore {
     @JoinColumn(name="iStoreID")
     private Store store;
 
+    @Transient
+    private Integer storeCount;
+    
+
     public Integer getiID() {
         return iID;
     }
@@ -48,4 +52,14 @@ public class AccountStore {
     public void setStore(Store store) {
         this.store = store;
     }
+    
+     public Integer getStoreCount() {
+        return storeCount;
+    }
+
+    public void setStoreCount(Integer storeCount) {
+        this.storeCount = storeCount;
+    }
+
+    
 }

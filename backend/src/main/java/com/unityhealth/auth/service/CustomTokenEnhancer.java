@@ -40,6 +40,7 @@ public class CustomTokenEnhancer implements TokenEnhancer {
                 additionalInfo.put("managerAccess", false);
             }
             
+            additionalInfo.put("user_ID", user.getAccount().getId());
             
             
             
