@@ -1,0 +1,53 @@
+<div id="slider-wrapper">
+	           <div id="layerslider" class="slider" style="width:100%; height:333px; background-color: rgba(66, 92, 144, 1.00); background-image: url('${bg_image}')">
+			       <c:forEach var="banner" items="${banners}">
+			           <c:set var="placement_logo">${left_sidelogo}</c:set>
+			           <c:if test="${banner.placementLogo eq 'right'}">
+			               <c:set var="placement_logo">${right_sidelogo}</c:set>
+			           </c:if>
+			           <c:set var="placement_content">${left_sidecontent}</c:set>
+			           <c:if test="${banner.placementContent eq 'right'}">
+			               <c:set var="placement_content">${right_sidecontent}</c:set>
+			           </c:if>
+			           <c:set var="placement_product">${left_sideproduct}</c:set>
+			           <c:if test="${banner.placementProduct eq 'right'}">
+			               <c:set var="placement_product">${right_sideproduct}</c:set>
+			           </c:if>
+			           <c:set var="placement_points">${left_sidepoints}</c:set>
+			           <c:if test="${banner.placementPoints eq 'right'}">
+			               <c:set var="placement_points">${right_sidepoints}</c:set>
+			           </c:if>
+			           <c:set var="placement_link">${left_sidelink}</c:set>
+			           <c:if test="${banner.placementLink eq 'right'}">
+			               <c:set var="placement_link">${right_sidelink}</c:set>
+			           </c:if>
+
+			           <c:set var="placementLogo">style="${placement_logo}"</c:set>
+			           <c:set var="placementContent">style="${placement_content}"</c:set>
+			           <c:set var="placementProduct">style="${placement_product}"</c:set>
+			           <c:set var="placementPoints">style="${placement_points}"</c:set>
+			           <c:set var="placementLink">style="${placement_link}"</c:set>
+			           <div class="ls-slide" style="left:0px;" data-ls="slidedelay:7000;">
+			               <c:if test="${not empty banner.image}">
+			                   <img src="${banner.image}" class="ls-l" ${placementProduct} />
+			               </c:if>
+			               <c:if test="${not empty banner.logoImage}">
+			                   <img src="${banner.logoImage}" class="ls-l" ${placementLogo}/>
+			               </c:if>
+			               <c:if test="${not empty banner.points and banner.points ne 0}">
+			                   <img src="images/banners/points/${banner.points}-points-${pointsColor}.png" class="ls-l" ${placementPoints}/>
+			               </c:if>
+			               <div class="ls-l" ${placementContent}>
+			                   ${banner.contentText}
+			               </div>
+                                       <c:if test="${not empty logged}">
+                                           <c:if test="${not empty banner.link}">
+                                                <div class="ls-l" ${placementLink}>
+                                                    <a href="${banner.link}" style="height:16px;"><button class="btn btn-u" style="height: 16px" >View</button></a>
+                                                </div>
+                                            </c:if>
+                                       </c:if>
+			           </div>
+			       </c:forEach>
+	            </div>
+            </div>
