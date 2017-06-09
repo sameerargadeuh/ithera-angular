@@ -16,7 +16,7 @@ export class FeaturedHomeService extends BaseService<Module> {
     let params: URLSearchParams = new URLSearchParams();
 
 
-    //params.set('piId', piId);
+    params.set('view', 'Featured');
 
 
     return this._http.get(this._baseUrl + '/getHomeFeaturedModules', {

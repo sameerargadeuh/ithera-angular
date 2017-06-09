@@ -7,7 +7,7 @@
 
                     <div class="col-md-9">
                         <ul class="list-inline top-v1-data topline">
-                            <li><a href="page.jsp?p=Home"><i class="fa fa-home" style="font-size:14px;"></i></a></li>
+                            <li><a [routerLink]="['/home']"><i class="fa fa-home" style="font-size:14px;"></i></a></li>
 
                       <li *ngIf="_authService.isAuthenticated()"  style="padding: 7px 10px;">
                        <li><span>Logged In: {{ _authService.getUserData().user_name }}</span>

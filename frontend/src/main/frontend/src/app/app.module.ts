@@ -16,20 +16,26 @@ import {AuthService} from './shared/auth/auth.service';
 import {AuthenticatedGuard} from './shared/guards/authenticated.guard';
 import {UnauthenticatedGuard} from './shared/guards/unauthenticated.guard';
 import {HomeComponent} from './home/home.component';
+// import {FeaturedHomeComponent} from './featured-home/featured-home.component';
+// import {FeaturedHomeService} from './featured-home/featured-home.service';
+import {FeaturedHomeModule} from './featured-home/featured-home.module';
 @NgModule({
   declarations: [
-    AppComponent, HeaderComponent, TopNavComponent,NavbarComponent,HomeComponent
+    AppComponent, HeaderComponent, TopNavComponent,NavbarComponent,HomeComponent //,FeaturedHomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    SwiperDemoModule,
-    LoginModule
+   SwiperDemoModule,
+    LoginModule,
+    FeaturedHomeModule
   ],
   providers: [AuthService, AuthenticatedGuard,
-        UnauthenticatedGuard],
+        UnauthenticatedGuard
+        //,FeaturedHomeService
+        ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

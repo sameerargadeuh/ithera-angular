@@ -110,6 +110,9 @@ List<Courses> mergedCourses = new ArrayList<Courses>();
 //        List<Integer> paramList = new ArrayList<Integer>();
 //        paramList.add(4);
 System.out.println("the value for view " + view);
+if(view == null){
+    view = "";
+}
 System.out.println("the value for brandId >>>>>>>>>>>>>>>>>>>>>> " + brandId);
 System.out.println("the value for brandId >>>>>>>>>>>>>>>>>>>>>> " + categoryId);
         switch (view) {

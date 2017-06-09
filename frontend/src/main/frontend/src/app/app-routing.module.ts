@@ -136,11 +136,7 @@ export const routes: Routes = [
 //     pathMatch: 'prefix',
 //     redirectTo: '404'
 //   },
-    {
-    path: 'featuredhomemodules',
-    pathMatch: 'prefix',
-    loadChildren: 'app/featured-home/featured-home.module',
-  },
+
    {
     path: 'educationmodules',
     pathMatch: 'prefix',
