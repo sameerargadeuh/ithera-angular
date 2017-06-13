@@ -5,7 +5,6 @@
  */
 package com.unityhealth.api.domain.self.accountStore;
 
-import java.io.Serializable;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,5 +21,5 @@ public interface IAccountStoreRepository extends JpaRepository<AccountStore, Int
     @Query("SELECT ast,act2 FROM AccountStore ast,Account act2,Group grp where ast.store.id = ast.account.store.id "
     + " and ast.account.id = ?1 and ast.store.id = act2.store.id and ast.store.group.id = grp.id and act2.userStatus='active'")
     List<Object[]> findByaccountId(Integer id);
-    
+
 }
