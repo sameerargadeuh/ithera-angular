@@ -17,7 +17,8 @@ public interface IReportRepository extends JpaRepository<Report, Integer>{
     List<Report> findByAccount_id(Integer userID);
 
     
-    @Query("SELECT r FROM Report r, Account a, Courses c WHERE r.account.store.id = ?1 ")
+    @Query("SELECT r FROM Report r, Account a, Courses c WHERE r.account.store.id = ?1 AND r.course.iCourseID = c.iCourseID  AND r.account.breezeID = a.breezeID AND r.course.iID IS NOT NULL "
+            + "AND r.course.iSite =1")
     List<Report> findBystoreId(Integer id);
     
     

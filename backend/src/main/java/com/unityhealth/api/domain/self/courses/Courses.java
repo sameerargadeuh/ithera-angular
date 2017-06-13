@@ -39,6 +39,7 @@ public class Courses implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @NotNull
     @Column(name = "iID")
     private Integer iID;
     @Basic(optional = false)
